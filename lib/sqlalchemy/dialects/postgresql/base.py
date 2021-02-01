@@ -1526,6 +1526,10 @@ class UUID(sqltypes.TypeEngine):
         """
         self.as_uuid = as_uuid
 
+    @property
+    def python_type(self):
+        return _python_UUID if self.as_uuid else str
+
     def coerce_compared_value(self, op, value):
         """See :meth:`.TypeEngine.coerce_compared_value` for a description."""
 
